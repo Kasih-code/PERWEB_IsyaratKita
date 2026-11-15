@@ -49,6 +49,10 @@
         q('[data-teks-alih-label]').textContent = daftar ? 'Sudah punya akun?' : 'Belum punya akun?';
         q('[data-alih-mode]').textContent = daftar ? 'Masuk' : 'Daftar Gratis';
         q('[data-input-sandi]').setAttribute('autocomplete', daftar ? 'new-password' : 'current-password');
+        var bidangNama = q('[data-bidang-nama]');
+        var inputNama = q('[data-input-nama]');
+        if (bidangNama) { bidangNama.hidden = !daftar; }
+        if (inputNama) { inputNama.disabled = !daftar; }
     }
 
     function bukaModalLogin(pemicu) {
@@ -71,7 +75,7 @@
         if (panelMenu) { panelMenu.classList.remove('terbuka'); }
         if (tombolMenu) { tombolMenu.setAttribute('aria-expanded', 'false'); }
 
-        var inputPertama = modalLatar.querySelector('input:not([type=hidden])');
+        var inputPertama = modalLatar.querySelector('input:not([type=hidden]):not(:disabled)');
         if (inputPertama) { inputPertama.focus(); }
     }
 

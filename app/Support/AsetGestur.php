@@ -37,13 +37,21 @@ class AsetGestur
         return null;
     }
 
+    private static array $memo = [];
+
     private static function dariDatabase(string $kata): ?string
     {
-        $aset = AsetBisindo::aktif()
-            ->whereRaw('LOWER(kata) = ?', [mb_strtolower(trim($kata))])
-            ->latest('updated_at')
-            ->first();
+        $kunci = mb_strtolower(trim($kata));
 
-        return $aset?->url;
+        if (! array_key_exists($kunci, self::$memo)) {
+            $aset = AsetBisindo::aktif()
+                ->whereRaw('LOWER(kata) = ?', [$kunci])
+                ->latest('updated_at')
+                ->first();
+
+            self::$memo[$kunci] = $aset?->url;
+        }
+
+        return self::$memo[$kunci];
     }
 }

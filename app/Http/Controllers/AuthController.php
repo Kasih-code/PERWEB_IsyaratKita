@@ -83,12 +83,11 @@ class AuthController extends Controller
             'password' => $data['kata_sandi'], // di-hash otomatis oleh cast pada model User
         ]);
 
-        Auth::login($user);
-        $request->session()->regenerate();
-
-        return redirect()
-            ->intended($this->tujuanAman($request))
-            ->with('sukses', 'Akun berhasil dibuat. Selamat belajar, '.$user->name.'!');
+        return back()
+            ->withInput(['email' => $user->email])
+            ->with('mode_modal', 'masuk')
+            ->with('buka_modal_login', true)
+            ->with('sukses', 'Akun berhasil dibuat. Silakan masuk dengan email dan kata sandi kamu.');
     }
 
     public function keluar(Request $request): RedirectResponse

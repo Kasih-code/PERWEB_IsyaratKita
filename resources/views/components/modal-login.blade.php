@@ -15,7 +15,7 @@
     $galat = $errors->getBag('login');
     $mode = old('mode_modal', session('mode_modal', 'masuk'));
     $mode = $mode === 'daftar' ? 'daftar' : 'masuk';
-    $bukaSaatMuat = $bukaOtomatis || $galat->any();
+    $bukaSaatMuat = $bukaOtomatis || $galat->any() || session('buka_modal_login');
     $kembali = request()->routeIs('login') ? route('beranda') : request()->fullUrl();
 @endphp
 
@@ -41,11 +41,11 @@
             <input type="hidden" name="kembali" value="{{ $kembali }}" data-input-kembali>
             <input type="hidden" name="mode_modal" value="{{ $mode }}" data-input-mode>
 
-            <div class="bidang">
+            <div class="bidang" data-bidang-nama @if ($mode !== 'daftar') hidden @endif>
                 <label class="bidang__label" for="login-nama">Nama Lengkap</label>
                 <input class="input @if ($galat->has('nama')) input--galat @endif" type="text" id="login-nama" name="nama"
                        value="{{ old('nama') }}" placeholder="Andy Pratama" autocomplete="name"
-                       maxlength="100" data-input-nama>
+                       maxlength="100" data-input-nama @if ($mode !== 'daftar') disabled @endif>
                 @if ($galat->has('nama'))<p class="bidang__galat">{{ $galat->first('nama') }}</p>@endif
             </div>
 

@@ -31,16 +31,43 @@
                 @endforeach
             </nav>
 
-            <h2 class="hasil__judul">{{ $judulHasil }}</h2>
+                        <h2 class="hasil__judul">{{ $judulHasil }}</h2>
+
+            {{-- Pencarian: kata yang diketik langsung dieja per huruf --}}
+            @if (count($hurufHasil) > 0)
+                <article class="kata-kartu">
+                    <div class="kata-kartu__kepala">
+                        <div>
+                            <h3 class="kata-kartu__judul">{{ strtoupper($kataPencarian) }}</h3>
+                            <p class="kata-kartu__teks">Isyarat BISINDO per huruf untuk kosakata ini.</p>
+                        </div>
+                    </div>
+
+                    @if ($gambarKataCari)
+                        <figure class="kata-kartu__gambar-kata">
+                            <img src="{{ $gambarKataCari }}" alt="Isyarat BISINDO untuk kata {{ $kataPencarian }}" loading="lazy">
+                        </figure>
+                    @endif
+
+                    <div class="kata-kartu__huruf">
+                        @foreach ($hurufHasil as $indeks => $huruf)
+                            <x-kartu-huruf :huruf="$huruf" :urutan="$indeks + 1" />
+                        @endforeach
+                    </div>
+                </article>
+            @endif
 
             @if (count($daftarKata) > 0)
+                @if (count($hurufHasil) > 0)
+                    <h3 class="hasil__sub">Kosakata terkait di kamus</h3>
+                @endif
                 <div class="hasil__daftar">
                     @foreach ($daftarKata as $kata)
                         <x-kartu-kata :kata="$kata" />
                     @endforeach
                 </div>
-            @else
-                <p class="hasil__kosong">Kata belum ditemukan. Coba huruf atau kata lain.</p>
+            @elseif (count($hurufHasil) === 0)
+                <p class="hasil__kosong">Kosakata tidak ditemukan. Coba huruf atau kata lain.</p>
             @endif
         </div>
     </section>

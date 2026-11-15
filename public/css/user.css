@@ -356,3 +356,13 @@
 /* ---------- Detail kata: gambar untuk kata utuh ---------- */
 .kata-kartu__gambar-kata { margin: 24px auto 0; width: min(100%, 420px); }
 .kata-kartu__gambar-kata img { width: 100%; height: auto; border-radius: 16px; }
+
+/* Kamus: kartu kata dapat dibuka langsung di halaman (tanpa halaman detail) */
+details.kartu-kata { display: block; }
+.kartu-kata__ringkas { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; list-style: none; }
+.kartu-kata__ringkas::-webkit-details-marker { display: none; }
+.kartu-kata__aksi { padding: 8px 14px; border: 1.5px solid var(--warna-primer); border-radius: 999px; font-size: 14px; font-weight: 700; color: var(--warna-primer); white-space: nowrap; }
+details.kartu-kata[open] { grid-column: 1 / -1; }
+details.kartu-kata[open] .kartu-kata__aksi { background: var(--warna-primer); color: #fff; }
+details.kartu-kata .kata-kartu__huruf { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); margin-top: 20px; }
+.hasil__sub { margin-top: 36px; font-size: 16px; font-weight: 700; }

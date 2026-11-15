@@ -6,6 +6,7 @@ use App\Data\DataDummy;
 use App\Services\Kamus;
 use App\Support\AsetGestur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str; 
 
 class KamusController extends Controller
 {
@@ -26,10 +27,21 @@ class KamusController extends Controller
             $hurufAktif = 'A';
         }
 
+        $hurufHasil = [];
+        $gambarKataCari = null;
+
         if ($kataPencarian !== '') {
-            $daftarKata = $this->kamus->cari($kataPencarian);
+            $daftarKata = array_values(array_filter(
+                $this->kamus->cari($kataPencarian),
+                fn ($k) => mb_strtolower($k['kata']) !== mb_strtolower($kataPencarian)
+            ));
             $judulHasil = "Hasil pencarian untuk '{$kataPencarian}'";
             $hurufAktif = null;
+
+            // Eja langsung: ambil huruf A-Z saja (spasi/tanda baca diabaikan), maksimal 30 huruf.
+            $hurufSaja = substr(strtoupper(preg_replace('/[^A-Za-z]/', '', Str::ascii($kataPencarian))), 0, 30);
+            $hurufHasil = $hurufSaja === '' ? [] : str_split($hurufSaja);
+            $gambarKataCari = AsetGestur::url($kataPencarian);
         } else {
             $daftarKata = $this->kamus->daftarKata()[$hurufAktif] ?? [];
             $judulHasil = "Hasil Pencarian untuk huruf '{$hurufAktif}'";
@@ -40,6 +52,8 @@ class KamusController extends Controller
             'hurufAktif',
             'kataPencarian',
             'daftarKata',
+            'hurufHasil',
+            'gambarKataCari',
             'judulHasil'
         ));
     }
