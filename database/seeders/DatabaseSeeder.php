@@ -4,20 +4,19 @@ namespace Database\Seeders;
 
 use App\Models\Kuis;
 use App\Models\Modul;
-use App\Models\ProgresModul;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Data awal IsyaratKita untuk pengembangan lokal (aman dijalankan ulang):
+     * Data awal IsyaratKita:
      *
-     *  - Admin  : andi@isyaratkita.id / admin12345   (role admin, masuk lewat /admin/login)
-     *  - User   : andi@email.com      / password123  (Modul 1 selesai, Modul 2 terbuka)
+     *  - Admin  : dibuat dari .env (ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_NAME)
      *  - 5 modul contoh beserta materi dan quiz-nya (dapat diubah Admin lewat CMS)
      *
-     * Tidak dijalankan pada server non-lokal; akun demo menggunakan sandi contoh.
+     * Tidak ada akun User demo; User mendaftar sendiri lewat website.
+     * Tidak dijalankan pada server non-lokal.
      * Seeder tidak mengubah akun, progres, atau modul yang sudah tersimpan.
      *
      * Donasi TIDAK di-seed. Untuk data donasi contoh (bertanda simulasi) jalankan:
@@ -25,33 +24,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Jangan pernah membuat akun contoh dengan sandi umum pada server sungguhan.
         if (! app()->environment('local', 'testing')) {
-            $this->command?->warn('Seeder contoh dilewati: hanya boleh dijalankan pada APP_ENV=local/testing.');
+            $this->command?->warn('Seeder dilewati: hanya boleh dijalankan pada APP_ENV=local/testing.');
 
             return;
         }
 
-        $admin = $this->buatAkun('andi@isyaratkita.id', 'Andi Pratama', 'admin12345', User::PERAN_ADMIN, '0812 8899 1044');
-        $user = $this->buatAkun('andi@email.com', 'Andi Pratama', 'password123', User::PERAN_USER);
+        $email = env('ADMIN_EMAIL');
+        $sandi = env('ADMIN_PASSWORD');
+
+        if (! $email || ! $sandi) {
+            $this->command?->error('ADMIN_EMAIL dan ADMIN_PASSWORD wajib diisi di .env sebelum db:seed.');
+
+            return;
+        }
+
+        $admin = $this->buatAkun(
+            strtolower($email),
+            env('ADMIN_NAME', 'Admin IsyaratKita'),
+            $sandi,
+            User::PERAN_ADMIN
+        );
 
         $this->seedModul($admin);
-
-        // Modul 1 sudah selesai untuk akun User contoh.
-        $modul1 = Modul::where('nomor', 1)->first();
-        if ($modul1) {
-            ProgresModul::firstOrCreate(
-                ['user_id' => $user->id, 'modul_id' => $modul1->id],
-                [
-                    'status'              => 'selesai',
-                    'skor_terakhir'       => 9,
-                    'total_soal_terakhir' => 10,
-                    'skor_terbaik'        => 9,
-                    'jumlah_percobaan'    => 1,
-                    'selesai_pada'        => now(),
-                ]
-            );
-        }
     }
 
     private function buatAkun(string $email, string $nama, string $sandi, string $peran, ?string $whatsapp = null): User
