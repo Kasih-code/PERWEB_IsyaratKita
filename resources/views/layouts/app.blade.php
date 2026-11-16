@@ -11,6 +11,8 @@
     @foreach (['dasar', 'komponen', 'halaman', 'user'] as $berkasCss)
         <link rel="stylesheet" href="{{ asset("css/{$berkasCss}.css") }}?v={{ filemtime(public_path("css/{$berkasCss}.css")) }}">
     @endforeach
+{{-- Tambahan CSS untuk tampilan baru --}}
+<link rel="stylesheet" href="{{ asset('css/neww.css') }}?v={{ filemtime(public_path('css/neww.css')) }}">
 </head>
 <body>
     @unless ($pratinjau ?? false)
@@ -39,5 +41,7 @@
 
     <script src="{{ asset('js/app.js') }}?v={{ filemtime(public_path('js/app.js')) }}" defer></script>
     <script src="{{ asset('js/user.js') }}?v={{ filemtime(public_path('js/user.js')) }}" defer></script>
+{{-- Tambahan JavaScript untuk animasi --}}
+<script src="{{ asset('js/new.js') }}?v={{ filemtime(public_path('js/new.js')) }}" defer></script>
 </body>
 </html>

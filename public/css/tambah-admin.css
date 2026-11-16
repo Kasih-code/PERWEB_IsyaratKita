@@ -1,0 +1,133 @@
+
+/* IsyaratKita — Penyegaran tampilan CMS.
+   Hanya CSS, semua aksi admin tetap sama.
+*/
+
+
+/* =========================================
+   1. VARIABEL WARNA & DESAIN ADMIN
+========================================= */
+
+:root {
+    --warna-primer: #167c87;
+    --warna-primer-gelap: #0d626c;
+    --warna-lembut: #e0f5f3;
+    --warna-teks: #18343b;
+    --warna-teks-redup: #526c72;
+    --warna-garis: #dbe8e7;
+
+    --adm-latar: #f5f9f9;
+    --adm-garis: #dfebeb;
+}
+
+
+/* =========================================
+   2. SIDEBAR ADMIN
+========================================= */
+
+.adm-sisi {
+    box-shadow: 8px 0 28px rgba(28, 82, 89, .025);
+}
+
+
+/* =========================================
+   3. LOGO ADMIN
+========================================= */
+
+.adm-logo__ikon {
+    background: linear-gradient(
+        145deg,
+        #19949c,
+        #106775
+    );
+
+    border-radius: 13px;
+    box-shadow: 0 6px 17px rgba(22, 124, 135, .15);
+}
+
+
+/* =========================================
+   4. NAVIGASI ADMIN
+========================================= */
+
+.adm-nav__butir {
+    border-radius: 12px;
+
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+.adm-nav__butir:hover {
+    transform: translateX(3px);
+    background: #e9f6f4;
+}
+
+
+/* =========================================
+   5. HEADER ADMIN
+========================================= */
+
+.adm-header {
+    background: rgba(255, 255, 255, .94);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.adm-header h1 {
+    letter-spacing: -.025em;
+}
+
+
+/* =========================================
+   6. TOMBOL & MENU ADMIN
+========================================= */
+
+.adm-ikon-tombol,
+.adm-akun,
+.adm-tombol-menu {
+    transition:
+        background-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.adm-ikon-tombol:hover,
+.adm-akun:hover {
+    box-shadow: 0 6px 18px rgba(23, 79, 83, .09);
+}
+
+
+/* =========================================
+   7. AREA KONTEN ADMIN
+========================================= */
+
+.adm-isi {
+    background: radial-gradient(
+        ellipse at 95% 0%,
+        rgba(210, 239, 236, .29),
+        transparent 40%
+    );
+}
+
+
+/* =========================================
+   8. FORM & INPUT ADMIN
+========================================= */
+
+.adm-badan :is(input, textarea, select):focus-visible {
+    outline: 2px solid rgba(22, 124, 135, .48);
+    outline-offset: 2px;
+}
+
+
+/* =========================================
+   9. AKSESIBILITAS — REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .adm-nav__butir:hover {
+        transform: none;
+    }
+}

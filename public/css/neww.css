@@ -1,0 +1,450 @@
+
+/* IsyaratKita — penyegaran visual non-invasif.
+   Tidak mengubah logika aplikasi.
+*/
+
+/* =========================================
+   1. VARIABEL WARNA & DESAIN
+========================================= */
+
+:root {
+    --warna-primer: #167c87;
+    --warna-primer-gelap: #0d626c;
+    --warna-lembut: #e0f5f3;
+    --warna-latar-alt: #f5faf9;
+    --warna-teks: #18343b;
+    --warna-teks-redup: #526c72;
+    --warna-teks-halus: #677d81;
+    --warna-garis: #dbe8e7;
+
+    --radius-tombol: 12px;
+    --radius-kartu: 22px;
+
+    --bayangan-kartu: 0 12px 35px rgba(22, 87, 93, .07);
+}
+
+
+/* =========================================
+   2. PENGATURAN DASAR
+========================================= */
+
+body {
+    background: #fff;
+}
+
+::selection {
+    background: #c4edeb;
+    color: #17424a;
+}
+
+
+/* =========================================
+   3. NAVBAR & LOGO
+========================================= */
+
+.navbar {
+    background: rgba(255, 255, 255, .92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border-bottom-color: rgba(29, 110, 115, .10);
+    box-shadow: 0 4px 24px rgba(22, 58, 65, .035);
+}
+
+.navbar__tautan {
+    transition: color .2s ease, border-color .2s ease;
+}
+
+.logo__ikon {
+    border-radius: 13px;
+    background: linear-gradient(145deg, #1c9aa0, #106775);
+    box-shadow: 0 7px 18px rgba(22, 124, 135, .20);
+}
+
+
+/* =========================================
+   4. TOMBOL
+========================================= */
+
+.tombol {
+    transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        background-color .22s ease,
+        border-color .22s ease,
+        color .22s ease;
+}
+
+.tombol--primer {
+    background: linear-gradient(135deg, #198e98, #116b78);
+    box-shadow: 0 7px 20px rgba(21, 119, 131, .16);
+}
+
+.tombol:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+.tombol--primer:not(:disabled):hover {
+    box-shadow: 0 11px 28px rgba(21, 119, 131, .28);
+}
+
+.tombol:active:not(:disabled) {
+    transform: translateY(0) scale(.985);
+}
+
+
+/* =========================================
+   5. HERO SECTION
+========================================= */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 89% 18%,
+            rgba(174, 228, 219, .32),
+            transparent 47%
+        ),
+        linear-gradient(
+            160deg,
+            #fff 40%,
+            #f5fbfa 100%
+        );
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+
+    width: 390px;
+    height: 390px;
+    top: -225px;
+    right: -110px;
+
+    border: 1px solid rgba(43, 142, 148, .16);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 65px rgba(42, 144, 150, .025),
+        0 0 0 130px rgba(42, 144, 150, .018);
+
+    pointer-events: none;
+}
+
+.hero__judul {
+    letter-spacing: -.035em;
+    text-wrap: balance;
+}
+
+.hero__teks {
+    line-height: 1.8;
+}
+
+.hero__gambar img {
+    filter: drop-shadow(0 18px 20px rgba(19, 65, 70, .09));
+
+    transition:
+        transform .6s cubic-bezier(.2, .8, .2, 1);
+}
+
+.hero__gambar:hover img {
+    transform: translateY(-6px) scale(1.015);
+}
+
+
+/* =========================================
+   6. JUDUL & SECTION
+========================================= */
+
+.label-kecil {
+    letter-spacing: .09em;
+}
+
+.judul-seksi {
+    letter-spacing: -.03em;
+    text-wrap: balance;
+}
+
+.seksi--alt {
+    background: linear-gradient(
+        180deg,
+        #f5faf9,
+        #f9fcfc
+    );
+}
+
+
+/* =========================================
+   7. KARTU & MODUL
+========================================= */
+
+.kartu,
+.kartu-modul,
+.kartu-kata,
+.kartu-huruf,
+.baris-modul,
+.donasi-kartu {
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+.kartu-modul,
+.kartu-kata,
+.kartu-huruf,
+.baris-modul,
+.donasi-kartu {
+    box-shadow: var(--bayangan-kartu);
+}
+
+.kartu-modul:hover,
+.kartu-kata:hover,
+.kartu-huruf:hover,
+.baris-modul:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 20px 45px rgba(18, 84, 91, .13);
+
+    border-color: rgba(26, 135, 142, .25);
+}
+
+.gambar-placeholder {
+    transition: box-shadow .25s ease;
+}
+
+
+/* =========================================
+   8. GAMBAR & BAGIAN TENTANG
+========================================= */
+
+.tentang__gambar img,
+.bisindo__gambar img {
+    transition: transform .45s ease;
+}
+
+.tentang__gambar:hover img,
+.bisindo__gambar:hover img {
+    transform: scale(1.025);
+}
+
+.tentang__fitur > div {
+    padding: 20px;
+
+    border: 1px solid #e3efee;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, .76);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.tentang__fitur > div:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--bayangan-kartu);
+}
+
+
+/* =========================================
+   9. INPUT, FORM & PENCARIAN
+========================================= */
+
+.input,
+.pencarian__input,
+textarea,
+select {
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.input:focus,
+.pencarian__input:focus,
+textarea:focus-visible,
+select:focus-visible {
+    border-color: var(--warna-primer);
+
+    box-shadow:
+        0 0 0 4px rgba(22, 124, 135, .11);
+
+    outline: none;
+}
+
+
+/* =========================================
+   10. TOMBOL NOMINAL DONASI
+========================================= */
+
+.nominal button {
+    border-radius: 12px;
+
+    transition:
+        background-color .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.nominal button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   11. FOOTER
+========================================= */
+
+.footer {
+    background: linear-gradient(
+        180deg,
+        #f9fcfc,
+        #eff8f7
+    );
+}
+
+.footer__sosial a {
+    transition:
+        transform .2s ease,
+        background-color .2s ease,
+        color .2s ease;
+}
+
+.footer__sosial a:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   12. MODAL & ANIMASI
+========================================= */
+
+.modal {
+    box-shadow:
+        0 28px 78px rgba(15, 53, 62, .22);
+}
+
+.modal-latar.terbuka .modal {
+    animation:
+        ik-modal-in .25s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes ik-modal-in {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================
+   13. INDIKATOR PROGRES SCROLL
+========================================= */
+
+.ik-progress {
+    position: fixed;
+    inset: 0 auto auto 0;
+    z-index: 120;
+
+    height: 3px;
+    width: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #1b9fa2,
+        #72d2b1
+    );
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   14. ANIMASI REVEAL
+========================================= */
+
+.ik-reveal-ready {
+    opacity: 0;
+    transform: translateY(18px);
+
+    transition:
+        opacity .65s ease,
+        transform .65s cubic-bezier(.2, .8, .2, 1);
+}
+
+.ik-reveal-ready.ik-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   15. RESPONSIVE — TABLET
+========================================= */
+
+@media (max-width: 960px) {
+    .navbar__panel.terbuka {
+        box-shadow:
+            0 18px 35px rgba(23, 72, 78, .10);
+    }
+}
+
+
+/* =========================================
+   16. RESPONSIVE — MOBILE
+========================================= */
+
+@media (max-width: 560px) {
+    .hero::before {
+        width: 250px;
+        height: 250px;
+        top: -165px;
+    }
+
+    .tentang__fitur {
+        gap: 12px;
+    }
+
+    .tentang__fitur > div {
+        padding: 14px;
+    }
+
+    .hero__judul {
+        letter-spacing: -.025em;
+    }
+}
+
+
+/* =========================================
+   17. AKSESIBILITAS — REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .ik-reveal-ready {
+        opacity: 1;
+        transform: none;
+    }
+
+    .ik-progress {
+        display: none;
+    }
+
+    .hero__gambar img,
+    .tentang__gambar img,
+    .bisindo__gambar img {
+        transform: none !important;
+    }
+}

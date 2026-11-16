@@ -9,6 +9,8 @@
     @foreach (['dasar', 'admin'] as $berkasCss)
         <link rel="stylesheet" href="{{ asset("css/{$berkasCss}.css") }}?v={{ filemtime(public_path("css/{$berkasCss}.css")) }}">
     @endforeach
+{{-- Tambahan CSS dashboard admin --}}
+<link rel="stylesheet" href="{{ asset('css/tambah-admin.css') }}?v={{ filemtime(public_path('css/tambah-admin.css')) }}">
 </head>
 <body class="adm-badan">
 @php
