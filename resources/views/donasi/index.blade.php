@@ -5,7 +5,7 @@
 
 @section('isi')
     {{-- ===== Hero ===== --}}
-    <x-hero ukuran="donasi" label="Program Inklusi" :gambar="asset('images/umum/hero-donasi.jpg')">
+    <x-hero ukuran="donasi" label="Program Inklusi" :gambar="asset('images/umum/donasi.png')">
         <x-slot:judul>Berbagi Kebaikan Bersama IsyaratKita</x-slot:judul>
         Setiap donasi yang Anda berikan dialokasikan penuh untuk membiayai pengadaan modul pembelajaran gratis bagi sekolah-sekolah luar biasa, pelatihan interpreter BISINDO, dan kampanye kepedulian inklusi sosial.
     </x-hero>

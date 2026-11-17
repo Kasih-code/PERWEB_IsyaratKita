@@ -4,7 +4,7 @@
 
 @section('isi')
     {{-- ===== Hero ===== --}}
-    <x-hero ukuran="besar" label="Belajar Bahasa Isyarat Indonesia Online" :gambar="asset('images/umum/hero-beranda.jpg')">
+    <x-hero ukuran="besar" label="Belajar Bahasa Isyarat Indonesia Online" :gambar="asset('images/umum/hero1.png')">
         <x-slot:judul>
             Hubungkan Jarak, <span class="teks-aksen">Suarakan Hati</span> Lewat Bahasa Isyarat
         </x-slot:judul>
@@ -19,7 +19,7 @@
     {{-- ===== Tentang IsyaratKita ===== --}}
     <section class="seksi seksi--alt" id="tentang">
         <div class="wadah tentang__isi">
-            <x-placeholder-gambar class="tentang__gambar" :src="asset('images/umum/tentang.jpg')" alt="gambar tentang kami" />
+            <x-placeholder-gambar class="tentang__gambar" :src="asset('images/umum/rangkul.png')" alt="Ilustrasi kebersamaan dan komunikasi inklusif" />
 
             <div>
                 <span class="label-kecil">Tentang Kami</span>
@@ -56,7 +56,7 @@
                     <x-tombol variasi="garis" :href="route('modul.detail', 1)">Pelajari Lebih Lanjut</x-tombol>
                 </div>
             </div>
-            <x-placeholder-gambar class="bisindo__gambar" :src="asset('images/umum/bisindo.jpg')" alt="BISINDO" />
+            <x-placeholder-gambar class="bisindo__gambar" :src="asset('images/umum/confused final.png')" alt="BISINDO" />
         </div>
     </section>
 

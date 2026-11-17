@@ -4,7 +4,7 @@
 
 @section('isi')
     {{-- ===== Hero ===== --}}
-    <x-hero ukuran="sedang" :gambar="asset('images/umum/hero-modul.jpg')">
+    <x-hero ukuran="sedang" :gambar="asset('images/umum/hero-modul.png')">
         <x-slot:judul>Modul Pembelajaran BISINDO</x-slot:judul>
         Pelajari tata cara bahasa isyarat melalui modul yang interaktif, visual, dan dilengkapi kuis penguji pemahaman untuk memastikan progres belajar yang optimal.
     </x-hero>

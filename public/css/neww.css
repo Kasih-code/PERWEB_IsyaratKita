@@ -448,3 +448,35 @@ select:focus-visible {
         transform: none !important;
     }
 }
+
+/* Logo baru IsyaratKita */
+
+.logo__gambar {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+/* =========================================
+   ILUSTRASI ISYARATKITA
+========================================= */
+
+.tentang__gambar img,
+.bisindo__gambar img,
+.gambar-ilustrasi {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    object-fit: contain;
+    margin-inline: auto;
+}
+
+@media (max-width: 560px) {
+    .tentang__gambar img,
+    .bisindo__gambar img,
+    .gambar-ilustrasi {
+        max-width: 320px;
+    }
+}
