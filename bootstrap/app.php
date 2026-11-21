@@ -12,6 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         // Pengecualian CSRF untuk notifikasi pembayaran Midtrans.
+        $middleware->trustProxies(at: '*');        
         $middleware->validateCsrfTokens(except: [
             'midtrans/notifikasi',
         ]);

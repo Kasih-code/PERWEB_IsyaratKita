@@ -14,6 +14,8 @@ return [
     */
 
     'default' => env('FILESYSTEM_DISK', 'local'),
+    'unggahan_driver' => env('UNGGAHAN_DRIVER', 'local'),
+    'cloudinary_url'  => env('CLOUDINARY_URL'),
 
     /*
     |--------------------------------------------------------------------------

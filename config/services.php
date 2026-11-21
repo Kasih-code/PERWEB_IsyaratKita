@@ -41,4 +41,9 @@ return [
         'client_key' => env('MIDTRANS_CLIENT_KEY'),
     ],
 
+    'admin' => [
+        'name' => env('ADMIN_NAME', 'Admin IsyaratKita'),
+        'email' => env('ADMIN_EMAIL'),
+        'password' => env('ADMIN_PASSWORD'),
+    ],
 ];

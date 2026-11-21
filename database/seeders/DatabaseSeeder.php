@@ -24,14 +24,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        if (! app()->environment('local', 'testing')) {
-            $this->command?->warn('Seeder dilewati: hanya boleh dijalankan pada APP_ENV=local/testing.');
+        if (! app()->environment('local', 'testing', 'production')) {
+            $this->command?->warn('Seeder dilewati: hanya untuk APP_ENV local, testing, atau production.');
 
             return;
         }
 
-        $email = env('ADMIN_EMAIL');
-        $sandi = env('ADMIN_PASSWORD');
+        $email = config('services.admin.email');
+        $sandi = config('services.admin.password');
 
         if (! $email || ! $sandi) {
             $this->command?->error('ADMIN_EMAIL dan ADMIN_PASSWORD wajib diisi di .env sebelum db:seed.');
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
 
         $admin = $this->buatAkun(
             strtolower($email),
-            env('ADMIN_NAME', 'Admin IsyaratKita'),
+            config('services.admin.name', 'Admin IsyaratKita'),
             $sandi,
             User::PERAN_ADMIN
         );

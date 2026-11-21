@@ -308,16 +308,8 @@ class ModulAdminController extends Controller
         }
     }
 
-    private function salinBerkas(string $path): ?string
+        private function salinBerkas(string $path): ?string
     {
-        $disk = Storage::disk(Unggahan::DISK);
-        if (! $disk->exists($path)) {
-            return null;
-        }
-
-        $baru = 'materi/'.bin2hex(random_bytes(16)).'.'.pathinfo($path, PATHINFO_EXTENSION);
-        $disk->copy($path, $baru);
-
-        return $baru;
+        return Unggahan::salin($path, 'materi');
     }
 }

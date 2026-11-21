@@ -35,5 +35,13 @@
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="NIGHTWATCH_ENABLED" value="false"/>
+        <env name="ADMIN_NAME" value="Andi Admin"/>
+        <env name="ADMIN_EMAIL" value="andi@isyaratkita.id"/>
+        <env name="ADMIN_PASSWORD" value="admin12345"/>
+        <env name="MIDTRANS_IS_PRODUCTION" value="false"/>
+        <env name="MIDTRANS_SERVER_KEY" value=""/>
+        <env name="MIDTRANS_CLIENT_KEY" value=""/>
+        <env name="UNGGAHAN_DRIVER" value="local"/>
+        <env name="CLOUDINARY_URL" value=""/>
     </php>
 </phpunit>

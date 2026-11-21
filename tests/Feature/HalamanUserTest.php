@@ -77,13 +77,14 @@ class HalamanUserTest extends TestCase
         $this->get(route('beranda'))->assertSee('data-buka-otomatis', false);
     }
 
-    public function test_daftar_membuat_akun_dan_langsung_login(): void
+    public function test_daftar_membuat_akun_lalu_meminta_user_masuk(): void
     {
         $this->post(route('daftar.proses'), [
             'nama' => 'Budi Santoso', 'email' => 'budi@email.com', 'kata_sandi' => 'rahasia123',
-        ])->assertRedirect(route('beranda'));
+        ])->assertRedirect(route('beranda'))
+            ->assertSessionHas('buka_modal_login', true);
 
-        $this->assertAuthenticated();
+        $this->assertGuest();
         $this->assertDatabaseHas('users', ['email' => 'budi@email.com', 'name' => 'Budi Santoso']);
     }
 
@@ -286,14 +287,12 @@ class HalamanUserTest extends TestCase
 
     /* ---------- Donasi ---------- */
 
-    public function test_donasi_user_menampilkan_form_aktif_dan_modal_simulasi(): void
+    public function test_donasi_user_menampilkan_form_aktif_dan_snap_midtrans(): void
     {
         $this->actingAs($this->user())->get(route('donasi.index'))
             ->assertOk()
             ->assertSee('data-form-donasi', false)
-            ->assertSee('modal-qris', false)
-            ->assertSee('modal-donasi-sukses', false)
-            ->assertSee('Simulasi')
+            ->assertSee('snap.js', false)
             ->assertDontSee('data-buka-otomatis', false);
     }
 

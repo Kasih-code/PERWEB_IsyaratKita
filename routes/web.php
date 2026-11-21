@@ -137,7 +137,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Semua route di bawah ini hanya untuk akun dengan role admin.
     Route::middleware('admin')->group(function () {
 
-        Route::get('/', fn () => redirect()->route('admin.dashboard'));
+        Route::redirect('/', '/admin/dashboard');
 
         Route::post('/logout', [AuthAdminController::class, 'keluar'])
             ->name('logout');
