@@ -1,4 +1,4 @@
-{{-- Kartu kata pada Kamus. Dapat dibuka langsung di halaman untuk melihat ejaan isyarat per huruf.
+{{-- Kartu kata pada Kamus. Dapat dibuka langsung di halaman untuk melihat gerakan per kata dan ejaan isyarat per huruf.
      $kata = ['kata','slug','huruf'] --}}
 @props(['kata', 'terbuka' => false])
 
@@ -15,12 +15,16 @@
         <span class="kartu-kata__aksi">Lihat Isyarat</span>
     </summary>
 
+    <h4 class="kata-kartu__subjudul">Gerakan Per Kata</h4>
     @if ($gambarKata)
         <figure class="kata-kartu__gambar-kata">
             <img src="{{ $gambarKata }}" alt="Isyarat BISINDO untuk kata {{ $teksKata }}" loading="lazy">
         </figure>
+    @else
+        <p class="kata-kartu__kosong">Asset belum ditambahkan</p>
     @endif
 
+    <h4 class="kata-kartu__subjudul">Ejaan Per Huruf</h4>
     <div class="kata-kartu__huruf">
         @foreach ($hurufKata as $indeks => $huruf)
             <x-kartu-huruf :huruf="$huruf" :urutan="$indeks + 1" />

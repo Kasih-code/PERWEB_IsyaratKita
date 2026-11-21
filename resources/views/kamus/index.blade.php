@@ -39,15 +39,20 @@
                     <div class="kata-kartu__kepala">
                         <div>
                             <h3 class="kata-kartu__judul">{{ strtoupper($kataPencarian) }}</h3>
-                            <p class="kata-kartu__teks">Isyarat BISINDO per huruf untuk kosakata ini.</p>
+                            <p class="kata-kartu__teks">Isyarat BISINDO untuk kosakata ini.</p>
                         </div>
                     </div>
 
+                    <h3 class="kata-kartu__subjudul">Gerakan Per Kata</h3>
                     @if ($gambarKataCari)
                         <figure class="kata-kartu__gambar-kata">
                             <img src="{{ $gambarKataCari }}" alt="Isyarat BISINDO untuk kata {{ $kataPencarian }}" loading="lazy">
                         </figure>
+                    @else
+                        <p class="kata-kartu__kosong">Asset belum ditambahkan</p>
                     @endif
+
+                    <h3 class="kata-kartu__subjudul">Ejaan Per Huruf</h3>
 
                     <div class="kata-kartu__huruf">
                         @foreach ($hurufHasil as $indeks => $huruf)

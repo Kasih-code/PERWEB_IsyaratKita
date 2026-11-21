@@ -23,15 +23,20 @@
                 <div class="kata-kartu__kepala">
                     <div>
                         <h1 class="kata-kartu__judul">{{ $kataBesar }}</h1>
-                        <p class="kata-kartu__teks">Ejaan isyarat satu tangan per huruf untuk kosa kata "{{ $kataBesar }}".</p>
+                        <p class="kata-kartu__teks">Isyarat BISINDO untuk kosakata "{{ $kataBesar }}": gerakan per kata dan ejaan per huruf.</p>
                     </div>
                 </div>
 
+                <h2 class="kata-kartu__subjudul">Gerakan Per Kata</h2>
                 @if ($gambarKata)
                     <figure class="kata-kartu__gambar-kata">
                         <img src="{{ $gambarKata }}" alt="Isyarat BISINDO untuk kata {{ $kata['kata'] }}" loading="lazy">
                     </figure>
+                @else
+                    <p class="kata-kartu__kosong">Asset belum ditambahkan</p>
                 @endif
+
+                <h2 class="kata-kartu__subjudul">Ejaan Per Huruf</h2>
 
                 <div class="kata-kartu__huruf">
                     @foreach ($daftarHurufKata as $indeks => $huruf)

@@ -366,3 +366,8 @@ details.kartu-kata[open] { grid-column: 1 / -1; }
 details.kartu-kata[open] .kartu-kata__aksi { background: var(--warna-primer); color: #fff; }
 details.kartu-kata .kata-kartu__huruf { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); margin-top: 20px; }
 .hasil__sub { margin-top: 36px; font-size: 16px; font-weight: 700; }
+
+
+/* Detail kata: sub-judul dan keterangan bila asset kata belum ada */
+.kata-kartu__subjudul { margin-top: 28px; font-size: 16px; font-weight: 700; }
+.kata-kartu__kosong { margin: 16px 0 0; padding: 28px 20px; text-align: center; color: var(--warna-teks-redup); background: #f8fafc; border: 1.5px dashed var(--warna-garis); border-radius: 16px; }
