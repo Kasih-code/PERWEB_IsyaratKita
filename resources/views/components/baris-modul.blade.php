@@ -17,6 +17,8 @@
     <div class="baris-modul__ikon">
         @if ($status === 'terkunci')
             <x-ikon nama="kunci" :ukuran="22" />
+        @elseif ($status === 'selesai')
+            <x-ikon nama="centang" :ukuran="26" :tebal="3" />
         @else
             <span class="baris-modul__nomor">{{ $modul['id'] }}</span>
         @endif
@@ -24,7 +26,7 @@
     <div class="baris-modul__isi">
         <div class="baris-modul__judul">
             <h3 class="baris-modul__nama">{{ $modul['judul'] }}</h3>
-            <span class="lencana lencana--{{ $status }}">{{ $teksStatus }}</span>
+            <span class="baris-modul__status-sr">{{ $teksStatus }}</span>
         </div>
         <p class="baris-modul__teks">{{ $modul['deskripsi'] }}</p>
     </div>

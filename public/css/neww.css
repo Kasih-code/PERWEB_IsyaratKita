@@ -535,3 +535,26 @@ select:focus-visible {
 
     .bisindo__gambar { display: none; }
 }
+
+/* Daftar modul: tombol di bawah teks pada tablet dan HP; di desktop tetap di ujung kanan */
+@media (max-width: 960px) {
+    .baris-modul { flex-wrap: wrap; gap: 16px; }
+    .baris-modul .tombol { width: 100%; }
+}
+
+/* Daftar modul: tanpa teks status; modul selesai memakai lingkaran centang */
+.baris-modul__status-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+.baris-modul--selesai .baris-modul__ikon {
+    background: var(--warna-primer);
+    color: #fff;
+}
