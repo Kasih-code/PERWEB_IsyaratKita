@@ -106,7 +106,9 @@
                         Lanjutkan Pembayaran Donasi
                     </x-tombol>
 
-                    <p class="donasi-catatan" data-status-donasi aria-live="polite">
+                    <p class="donasi-catatan" data-status-donasi aria-live="polite"></p>
+
+                    <p class="donasi-catatan">
                         Terima Kasih! God Bless You Always, Kak.
                     </p>
 
@@ -186,6 +188,10 @@
                     >
                         Lanjutkan Pembayaran Donasi
                     </x-tombol>
+
+                    <p class="donasi-catatan">
+                        Terima Kasih! God Bless You Always, Kak.
+                    </p>
                 </form>
             @endif
         </div>
