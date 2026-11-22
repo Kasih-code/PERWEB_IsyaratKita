@@ -1,6 +1,5 @@
 
 /* IsyaratKita — penyegaran visual non-invasif.
-   Tidak mengubah logika aplikasi.
 */
 
 /* =========================================
@@ -479,4 +478,60 @@ select:focus-visible {
     .gambar-ilustrasi {
         max-width: 320px;
     }
+}
+
+/* Perbaikan UX: area ketuk dan menu mobile */
+.nominal button { min-height: 44px; }
+
+@media (max-width: 960px) {
+    .navbar__panel.terbuka {
+        max-height: calc(100vh - var(--tinggi-navbar));
+        max-height: calc(100dvh - var(--tinggi-navbar));
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+}
+
+/* Perbaikan tampilan gambar */
+.hero__gambar { overflow: visible; }
+
+/* Layar sentuh: matikan efek hover yang "menempel" setelah diketuk */
+@media (hover: none) {
+    .hero__gambar:hover img,
+    .tentang__gambar:hover img,
+    .bisindo__gambar:hover img { transform: none; }
+}
+
+/* Gambar bagian Tentang dan BISINDO tampil utuh di tablet dan HP */
+@media (max-width: 900px) {
+    .tentang__gambar, .bisindo__gambar { height: auto; overflow: visible; }
+    .tentang__gambar img, .bisindo__gambar img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 340px;
+        margin-inline: auto;
+    }
+}
+
+/* ===== Tampilan HP: kurangi gambar dekoratif ===== */
+@media (max-width: 640px) {
+    /* Hero: judul dan tombol langsung terlihat, tanpa ilustrasi besar */
+    .hero__gambar { display: none; }
+    .hero__isi { row-gap: 0; }
+
+    /* Bagian Tentang dan BISINDO: gambar kecil, tidak terpotong */
+    .tentang__isi, .bisindo__isi { row-gap: 20px; }
+    .tentang__gambar, .bisindo__gambar { height: auto; overflow: visible; }
+    .tentang__gambar img, .bisindo__gambar img {
+        display: block;
+        width: auto;
+        max-width: 70%;
+        height: auto;
+        max-height: 180px;
+        margin-inline: auto;
+    }
+
+    .bisindo__gambar { display: none; }
 }
